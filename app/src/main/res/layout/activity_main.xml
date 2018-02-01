@@ -13,6 +13,12 @@
         android:weightSum="1"
         tools:context="com.jsyoon.settingpref.MainActivity">
 
+        <Button
+            android:id="@+id/option"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="설정"/>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -20,28 +26,25 @@
             android:text="Setting preference example" />
 
         <CheckedTextView
-            android:id="@+id/setting1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checkMark="?android:attr/listChoiceIndicatorMultiple"
             android:text="setting1"
-            android:checked="@{da.setting1}"/>
+            android:checked="@{da.getSetting1}"/>
 
         <CheckedTextView
-            android:id="@+id/setting2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checkMark="?android:attr/listChoiceIndicatorMultiple"
             android:text="setting2"
-            android:checked="@{da.setting2}"/>
+            android:checked="@{da.getSetting2}"/>
 
         <TextView
-            android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@{da.TextColor}"
-            android:textSize="@{da.TextSize}" />
+            android:text="@{da.getTextColor}"
+            android:textSize="@{da.getIntTextSize}" />
 
     </LinearLayout>
 </layout>
