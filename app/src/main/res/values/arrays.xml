@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Label ordering must match values -->
+    <array name="color_option_labels">
+        <item>@string/color_red</item>
+        <item>@string/color_blue</item>
+        <item>@string/color_green</item>
+    </array>
+</resources>
