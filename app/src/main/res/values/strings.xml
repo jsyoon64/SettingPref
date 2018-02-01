@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">SettingPref</string>
+
+    <string name="color_red">Red</string>
+    <string name="color_blue">Blue</string>
+    <string name="color_green">Green</string>
+
+    <color name="myRed">#F44336</color>
+    <color name="myBlue">#3F51B5</color>
+    <color name="myGreen">#4CAF50</color>
+
+    <!-- edit preference strings -->
+    <string name="key_setting1" translatable="false">setting1</string>
+    <string name="key_setting2" translatable="false">setting2</string>
+    <string name="key_setting3" translatable="false">setting3</string>
+    <string name="key_text_size" translatable="false">text_size</string>
+    <string name="key_text_color" translatable="false">text_color</string>
+
+    <string name="text_size_default" translatable="false">25</string>
 </resources>
