@@ -8,6 +8,7 @@ import android.databinding.BaseObservable;
 import android.support.annotation.ColorInt;
 import android.support.v4.content.ContextCompat;
 
+import com.jsyoon.settingpref.BR;
 import com.jsyoon.settingpref.R;
 
 public class SettingData extends BaseObservable {
@@ -15,8 +16,9 @@ public class SettingData extends BaseObservable {
 
     private boolean setting1;
     private boolean setting2;
-    private String textColor;
-    private int textSize;
+    private String colorstring;
+    private int textcolor;
+    private int textsize;
 
     @Bindable
     public boolean getSetting1() {
@@ -27,37 +29,37 @@ public class SettingData extends BaseObservable {
         return setting2;
     }
     @Bindable
-    public String getTextColor() {
-        return textColor;
+    public String getColorString() {
+        return colorstring;
     }
     @Bindable
-    public String getTextSize() {
-        return String.valueOf(textSize);
+    public int getTextColor() {
+        return textcolor;
     }
     @Bindable
-    public int getIntTextSize() {
-        return textSize;
+    public int gettextSize() {
+        return textsize;
     }
 
     public void setSetting1(boolean val) {
         setting1 = val;
-        notifyPropertyChanged(com.jsyoon.settingpref.BR.setting1);
+        notifyPropertyChanged(BR.setting1);
     }
     public void setSetting2(boolean val) {
         setting2 = val;
-        notifyPropertyChanged(com.jsyoon.settingpref.BR.setting2);
+        notifyPropertyChanged(BR.setting2);
     }
-    public void setTextColor(String str) {
-        textColor = str;
-        notifyPropertyChanged(com.jsyoon.settingpref.BR.textColor);
+    public void setColorString(String col) {
+        colorstring=col;
+        notifyPropertyChanged(BR.colorString);
     }
-    public void setTextSize(String str) {
-        textSize = Integer.parseInt(str);
-        notifyPropertyChanged(com.jsyoon.settingpref.BR.textSize);
+    public void setTextColor(int color) {
+        textcolor = color;
+        notifyPropertyChanged(BR.textColor);
     }
     public void setTextSize(int size) {
-        textSize = size;
-        notifyPropertyChanged(com.jsyoon.settingpref.BR.textSize);
+        textsize = size;
+        notifyPropertyChanged(BR.textSize);
     }
 
     public SettingData(Context context) {
@@ -66,8 +68,12 @@ public class SettingData extends BaseObservable {
 
         setSetting1(sharedPreferences.getBoolean(context.getString(R.string.key_setting1), true));
         setSetting2(sharedPreferences.getBoolean(context.getString(R.string.key_setting2), true));
-        setTextColor(sharedPreferences.getString(context.getString(R.string.key_text_color), context.getString(R.string.color_red)));
-        setTextSize(Integer.parseInt(sharedPreferences.getString(context.getString(R.string.key_text_size), context.getString(R.string.text_size_default))));
+        String col = sharedPreferences.getString(context.getString(R.string.key_text_color), context.getString(R.string.color_red));
+        setColorString(col);
+        setTextColor(getColorIntFromColorString(col));
+        setTextSize(Integer.parseInt(sharedPreferences.getString(
+                context.getString(R.string.key_text_size),
+                context.getString(R.string.text_size_default))));
     }
 
     public void update(SharedPreferences sharedPreferences, String key) {
@@ -76,7 +82,9 @@ public class SettingData extends BaseObservable {
         } else if (key.equals(context.getString(R.string.key_setting2))) {
             setSetting2(sharedPreferences.getBoolean(key, true));
         } else if (key.equals(context.getString(R.string.key_text_color))) {
-            setTextColor(sharedPreferences.getString(key, context.getString(R.string.color_red)));
+            String col = sharedPreferences.getString(key, context.getString(R.string.color_red));
+            setColorString(col);
+            setTextColor(getColorIntFromColorString(col));
         } else if (key.equals(context.getString(R.string.key_text_size))) {
             setTextSize(Integer.parseInt(sharedPreferences.getString(
                     context.getString(R.string.key_text_size),
